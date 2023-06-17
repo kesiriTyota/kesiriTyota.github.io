@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/html">
+<html xmlns="http://www.w3.org/1999/html" class="dark">
+<!--class="dark"-->
   <head>
     <title>Kesiri Theangyota</title>
     <meta content="text/html; charset=utf-8" />
@@ -11,12 +12,13 @@
 	  <link href="./src/fontawesome-6.4.0/css/fontawesome.css" rel="stylesheet">
 	  <link href="./src/fontawesome-6.4.0/css/brands.css" rel="stylesheet">
 	  <link href="./src/fontawesome-6.4.0/css/solid.css" rel="stylesheet">
-    <script src="./app.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.1/dist/cdn.min.js"></script>
+	  <script src="./app.js"></script>
   </head>
-  <body>
-    <div class="relative isolate overflow-hidden bg-gray-900">
-      <svg class="absolute inset-0 -z-10 h-full w-full stroke-white/10 [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)]" aria-hidden="true">
+  <body x-data="window.switchDarkMode" class="text-gray-800" x-cloak>
+    <div class="relative isolate overflow-hidden bg-white dark:bg-gray-900">
+	    <div x-show="!mode_dark" class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true"><div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%);"></div></div>
+      <svg x-show="mode_dark" class="absolute inset-0 -z-10 h-full w-full stroke-white/10 [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)]" aria-hidden="true">
         <defs>
           <pattern id="983e3e4c-de6d-4c3f-8d64-b9761d1534cc" width="200" height="200" x="50%" y="-1" patternUnits="userSpaceOnUse">
             <path d="M.5 200V.5H200" fill="none" />
@@ -27,16 +29,37 @@
         </svg>
         <rect width="100%" height="100%" stroke-width="0" fill="url(#983e3e4c-de6d-4c3f-8d64-b9761d1534cc)" />
       </svg>
+	    <svg x-show="!mode_dark" class="absolute inset-x-0 top-0 -z-10 h-[64rem] w-full stroke-gray-200 [mask-image:radial-gradient(32rem_32rem_at_center,white,transparent)]" aria-hidden="true">
+		    <defs>
+			    <pattern id="1f932ae7-37de-4c0a-a8b0-a6e3b4d44b84" width="200" height="200" x="50%" y="-1" patternUnits="userSpaceOnUse">
+				    <path d="M.5 200V.5H200" fill="none"></path>
+			    </pattern>
+		    </defs>
+		    <rect width="100%" height="100%" stroke-width="0" fill="url(#1f932ae7-37de-4c0a-a8b0-a6e3b4d44b84)"></rect>
+	    </svg>
       <div class="absolute left-[calc(50%-4rem)] top-10 -z-10 transform-gpu blur-3xl sm:left-[calc(50%-18rem)] lg:left-48 lg:top-[calc(50%-30rem)] xl:left-[calc(50%-24rem)]" aria-hidden="true">
         <div class="aspect-[1108/632] w-[69.25rem] bg-gradient-to-r from-[#80caff] to-[#4f46e5] opacity-20" style="clip-path: polygon(73.6% 51.7%, 91.7% 11.8%, 100% 46.4%, 97.4% 82.2%, 92.5% 84.9%, 75.7% 64%, 55.3% 47.5%, 46.5% 49.4%, 45% 62.9%, 50.3% 87.2%, 21.3% 64.1%, 0.1% 100%, 5.4% 51.1%, 21.4% 63.9%, 58.9% 0.2%, 73.6% 51.7%)"></div>
       </div>
-	    <!-- Section Hero -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 mx-auto max-w-7xl px-4 pb-10 pt-10 sm:pb-10 lg:flex flex-shrink-0 lg:px-8">
+
+	    <div class="py-5 lg:py-10 mx-auto max-w-7xl px-4 sm:pb-10 lg:px-8">
+		    <div class="text-right text-white" x-cloak>
+			    <button @click="switchMode()" id="theme-toggle" data-tooltip-target="tooltip-toggle" type="button" class="text-gray-500 bg-gray-100 dark:bg-gray-700 md:border dark:border-gray-700 dark:text-gray-400 hover:bg-gray-300 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
+				    <div class="flex gap-2">
+					    <svg x-show="mode_dark === true" aria-hidden="true" id="theme-toggle-dark-icon" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+					    <svg x-show="mode_dark === false" aria-hidden="true" id="theme-toggle-light-icon" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+					    <span x-text="mode_dark ? 'Dark mode' : 'Light mode'"></span>
+					    <span class="sr-only">Toggle dark mode</span>
+				    </div>
+			    </button>
+		    </div>
+
+		    <!-- Section Hero -->
+	      <div class="grid grid-cols-1 lg:grid-cols-2 lg:flex flex-shrink-0">
 	      <!-- Description -->
 	      <div class="flex w-full">
-		      <div class="mx-auto max-w-2xl flex lg:mx-0 lg:max-w-xl lg:pt-8">
+		      <div class="mx-auto max-w-2xl flex lg:mx-0 lg:max-w-xl overflow-x-auto">
 			      <!-- Git commit line -->
-			      <div class="mr-2 mt-[2rem] lg:mt-[2rem]">
+			      <div class="mr-2 mt-[0.4rem] lg:mt-[2rem]">
 				      <div class="ml-[-4px] mt-0 md:mr-4">
 					      <svg width="35" height="340" focusable="false" aria-hidden="true">
 						      <defs>
@@ -187,24 +210,24 @@
 					      </svg>
 				      </div>
 			      </div>
-			      <div>
-				      <div class="mt-10 flex gap-5">
-					      <a href="https://github.com/kesiriTyota" target="_blank" rel="noopener noreferrer" class="flex gap-2 items-center self-center text-sm md:text-lg rounded-md border border-white px-2 py-1 text-white">
-						      <i class="fa-brands fa-github-alt text-white text-lg"></i> Github
+			      <div class="mr-4">
+				      <div class="mt-4 lg:mt-10 flex gap-5">
+					      <a href="https://github.com/kesiriTyota" target="_blank" rel="noopener noreferrer" class="flex gap-2 items-center self-center text-sm md:text-lg rounded-md border border-gray-800 dark:border-white px-2 py-1 dark:text-white">
+						      <i class="fa-brands fa-github-alt dark:text-white text-lg"></i> Github
 					      </a>
-					      <a href="https://www.linkedin.com/in/kesiri-theangyota-ba7869216/" target="_blank" rel="noopener noreferrer" class="flex gap-2 items-center self-center text-sm md:text-lg rounded-md border border-white px-2 py-1 text-white">
-						      <i class="fa-brands fa-linkedin text-white text-lg"></i> LinkedIn
+					      <a href="https://www.linkedin.com/in/kesiri-theangyota-ba7869216/" target="_blank" rel="noopener noreferrer" class="flex gap-2 items-center self-center text-sm md:text-lg rounded-md border border-gray-800 dark:border-white px-2 py-1 dark:text-white">
+						      <i class="fa-brands fa-linkedin dark:text-white text-lg"></i> LinkedIn
 					      </a>
 				      </div>
-				      <div class="mt-6 text-2xl md:text-5xl lg:md:text-6xl font-bold tracking-tight text-white">Kesiri Theangyota</div>
-				      <div class="text-md md:text-xl lg:md:text-2xl text-white md:mt-2"><span class="italic">Full Stack Developer</span> 👩🏻‍💻 ☕️</div>
+				      <div class="mt-6 text-2xl md:text-5xl lg:md:text-6xl font-bold tracking-tight dark:text-white">Kesiri Theangyota</div>
+				      <div class="text-md md:text-xl lg:md:text-2xl dark:text-white md:mt-2"><span class="italic">Full Stack Developer</span> 👩🏻‍💻 ☕️</div>
 				      <div x-data="{read_more: false}" x-cloak>
-					      <p class="mt-3 md:mt-6 text-md md:text-lg md:leading-7 text-gray-300">
+					      <p class="mt-3 md:mt-6 text-md md:text-lg md:leading-7 dark:text-gray-300">
 						      Hi there! I'm a passionate Full Stack Developer with a primary focus on PHP Laravel framework.
 						      With several years of experience under my belt, I have honed my skills in crafting robust and scalable web
 						      applications.
 					      </p>
-					      <p x-show="read_more" class="mt-3 md:mt-6 text-md md:text-lg md:leading-7 text-gray-300">
+					      <p x-show="read_more" class="mt-3 md:mt-6 text-md md:text-lg md:leading-7 dark:text-gray-300">
 						      On the frontend side, I excel at creating intuitive and visually appealing user interfaces using HTML, CSS, and JavaScript.
 						      I am proficient in modern frontend frameworks like React, Alpine.js allowing me to build dynamic and interactive user experiences.
 					      </p>
@@ -218,23 +241,23 @@
 	      </div>
 
 	      <!-- Box Code -->
-	      <div class="mx-auto mt-16 flex max-w-md ">
-		      <div x-data="{active_tap: 1}" class="w-screen h-fit overflow-hidden rounded-t-xl bg-gray-900 ring-1 ring-white/10" x-cloak>
-			      <div class="flex bg-gray-800/40 ring-1 ring-white/5">
+	      <div class="mx-auto mt-10 flex max-w-md ">
+		      <div x-data="{active_tap: 1}" class="w-screen h-fit overflow-hidden rounded-t-xl bg-gray-50 dark:bg-gray-900 ring-1 ring-gray-200 dark:ring-white/10" x-cloak>
+			      <div class="flex bg-gray-100 dark:bg-gray-800/40 ring-1 ring-gray-200 dark:ring-white/5">
 				      <div class="-mb-px flex text-xs md:text-sm font-medium leading-6 text-white">
-					      <div @click="active_tap = 1" :class="active_tap===1 ? 'border-b border-r border-b-white/20 border-r-white/10 bg-white/5' : 'border-r border-gray-600/10 px-4 py-2 cursor-pointer'" class="flex px-4 py-2 cursor-pointer items-center">
-						      <i class="fa-brands fa-laravel text-white text-lg mr-2"></i>
-						      <div>PortfolioController.php</div>
+					      <div @click="active_tap = 1" :class="active_tap===1 ? 'border-b border-r border-b-white/20 border-r-white/10 bg-gray-200 dark:bg-white/5' : 'border-r border-gray-400/10 px-4 py-2 cursor-pointer'" class="flex px-4 py-2 cursor-pointer items-center">
+						      <i class="fa-brands fa-laravel text-gray-800 dark:text-white text-lg mr-2"></i>
+						      <div class="text-gray-600 dark:text-white">PortfolioController.php</div>
 					      </div>
-					      <div @click="active_tap = 2" :class="active_tap===2 ? 'border-b border-r border-l border-b-white/20 border-r-white/10 border-l-white/10 bg-white/5' : 'border-r border-gray-600/10 px-4 py-2 cursor-pointer'" class="flex px-4 py-2 cursor-pointer items-center">
-						      <img src="./src/images/svg/typescript.svg" class="mr-2 w-[15px] " width="18" height="18" alt="typescript" />
-						      <div>Portfolio.ts</div>
+					      <div @click="active_tap = 2" :class="active_tap===2 ? 'border-b border-r border-l border-b-white/20 border-r-white/10 border-l-white/10 bg-gray-200 dark:bg-white/5' : 'border-r border-gray-600/10  px-4 py-2 cursor-pointer'" class="flex px-4 py-2 cursor-pointer items-center">
+						      <img :src="mode_dark ?'./src/images/svg/typescript.svg' : './src/images/svg/typescript-dark.svg'" class="mr-2 w-[15px] " width="18" height="18" alt="typescript" />
+						      <div class="text-gray-600 dark:text-white">Portfolio.ts</div>
 					      </div>
 				      </div>
 			      </div>
 			      <div class="px-4 py-6">
 				      <div x-show="active_tap === 1">
-					      <div class="text-[11px] md:text-sm leading-4 md:leading-6 text-gray-300" style="tab-size: 0">
+					      <div class="text-[11px] md:text-sm leading-4 md:leading-6 text-gray-600 dark:text-gray-300" style="tab-size: 0">
 						      <code>
 							      <span class="text-amber-600">class</span> PortfolioController <span class="text-amber-600">extends</span> Controller {
 							      <div class="ml-[0.5rem] md:ml-[1rem] mt-2"><span class="text-amber-600">public function</span> <span class="text-amber-400">index</span>() { </div>
@@ -250,7 +273,7 @@
 					      </div>
 				      </div>
 				      <div x-show="active_tap === 2">
-					      <div class="text-[11px] md:text-sm leading-4 md:leading-6 text-gray-300" style="tab-size: 0">
+					      <div class="text-[11px] md:text-sm leading-4 md:leading-6 text-gray-600 dark:text-gray-300" style="tab-size: 0">
 						      <code>
 							      <div><span class="text-amber-600">type</span> ProfileType = {</div>
 							      <div class="ml-[1rem]"><span class="text-[#b579f6]">name</span>: <span class="text-amber-600">string;</span></div>
@@ -271,13 +294,13 @@
 		      </div>
 	      </div>
       </div>
-
+	    </div>
 	    <!-- Section Skills -->
 	    <div class="mx-auto max-w-7xl px-4 pb-16 pt-10 lg:px-8 gap-14 gap-y-20">
 		    <div class="mx-auto mb-20">
-			    <div class="relative isolate overflow-hidden bg-white/5 text-white pt-6 py-10 md:py-10 shadow-2xl rounded-xl ring-1 ring-white/20">
-				    <div class="md:divide-y divide-gray-600 lg:divide-x lg:divide-y-0">
-					    <div class="flex flex-1 flex-col md:flex-row divide-x divide-gray-600">
+			    <div class="relative isolate overflow-hidden border border-gray-200 dark:border-gray-500 bg-indigo-50/50 dark:bg-gray-900 text-gray-800 dark:text-white pt-6 py-10 md:py-10 shadow-2xl rounded-xl ring-1 ring-white/20">
+				    <div class="md:divide-y divide-gray-100 dark:divide-gray-600 lg:divide-x lg:divide-y-0">
+					    <div class="flex flex-1 flex-col md:flex-row md:divide-x md:divide-gray-300 md:dark:divide-gray-600">
 						    <div class="px-4 md:px-10 mb-6">
 							    <div class="text-3xl font-semibold">Languages</div>
 							    <div class="mt-6">
@@ -295,56 +318,56 @@
 								    <div>
 									    <div class="mt-6 text-xl">Backend Development</div>
 									    <div class="text-xs">Primary is PHP</div>
-									    <div class="flex justify-between items-center mt-4 text-lg leading-8 text-gray-300">
+									    <div class="flex justify-between items-center mt-4 text-lg leading-8 text-gray-500 dark:text-gray-300">
 										    <div>Laravel</div>
-										    <div class="text-right text-xs text-white">80%</div>
+										    <div class="text-right text-xs text-gray-500 dark:text-white">80%</div>
 									    </div>
-									    <div class="mt-1 overflow-hidden rounded-full bg-gray-200">
+									    <div class="mt-1 overflow-hidden rounded-full bg-blue-900/80 dark:bg-gray-200">
 										    <div class="h-2 rounded-full bg-indigo-400" style="width: calc((2 * 2 + 1) / 6 * 100%);"></div>
 									    </div>
-									    <div class="flex justify-between items-center mt-4 text-lg leading-8 text-gray-300">
+									    <div class="flex justify-between items-center mt-4 text-lg leading-8 text-gray-500 dark:text-gray-300">
 										    <div>Yii2</div>
-										    <div class="text-right text-xs text-white">80%</div>
+										    <div class="text-right text-xs text-gray-500 dark:text-white">80%</div>
 									    </div>
-									    <div class="mt-1 overflow-hidden rounded-full bg-gray-200">
+									    <div class="mt-1 overflow-hidden rounded-full bg-blue-900/80 dark:bg-gray-200">
 										    <div class="h-2 rounded-full bg-indigo-400" style="width: calc((2 * 2 + 1) / 6 * 100%);"></div>
 									    </div>
-									    <div class="flex justify-between items-center mt-4 text-lg leading-8 text-gray-300">
+									    <div class="flex justify-between items-center mt-4 text-lg leading-8 text-gray-500 dark:text-gray-300">
 										    <div>GO <span class="text-xs">(API Management)</span></div>
-										    <div class="text-right text-xs text-white">10%</div>
+										    <div class="text-right text-xs text-gray-500 dark:text-white">10%</div>
 									    </div>
-									    <div class="mt-1 overflow-hidden rounded-full bg-gray-200">
+									    <div class="mt-1 overflow-hidden rounded-full bg-blue-900/80 dark:bg-gray-200">
 										    <div class="h-2 rounded-full bg-indigo-400" style="width: calc((2 * 2 + 1) / 30 * 100%);"></div>
 									    </div>
 								    </div>
 								    <div>
 									    <div class="mt-6 text-xl">Frontend Development</div>
 									    <div class="text-xs">Javascript framework</div>
-									    <div class="flex justify-between items-center mt-4 text-lg leading-8 text-gray-300">
+									    <div class="flex justify-between items-center mt-4 text-lg leading-8 text-gray-500 dark:text-gray-300">
 										    <div>React</div>
-										    <div class="text-right text-xs text-white">40%</div>
+										    <div class="text-right text-xs text-gray-500 dark:text-white">40%</div>
 									    </div>
-									    <div class="mt-1 overflow-hidden rounded-full bg-gray-200">
+									    <div class="mt-1 overflow-hidden rounded-full bg-blue-900/80 dark:bg-gray-200">
 										    <div class="h-2 rounded-full bg-indigo-400" style="width: calc((2 * 2 + 1) / 10 * 100%);"></div>
 									    </div>
-									    <div class="flex justify-between items-center mt-4 text-lg leading-8 text-gray-300">
+									    <div class="flex justify-between items-center mt-4 text-lg leading-8 text-gray-500 dark:text-gray-300">
 										    <div>Vue.js</div>
-										    <div class="text-right text-xs text-white">30%</div>
+										    <div class="text-right text-xs text-gray-500 dark:text-white">30%</div>
 									    </div>
-									    <div class="mt-1 overflow-hidden rounded-full bg-gray-200">
+									    <div class="mt-1 overflow-hidden rounded-full bg-blue-900/80 dark:bg-gray-200">
 										    <div class="h-2 rounded-full bg-indigo-400" style="width: calc((2 * 2 + 1) / 12 * 100%);"></div>
 									    </div>
-									    <div class="flex justify-between items-center mt-4 text-lg leading-8 text-gray-300">
+									    <div class="flex justify-between items-center mt-4 text-lg leading-8 text-gray-500 dark:text-gray-300">
 										    <div>Alpine.js</div>
-										    <div class="text-right text-xs text-white">80%</div>
+										    <div class="text-right text-xs text-gray-500 dark:text-white">80%</div>
 									    </div>
-									    <div class="mt-1 overflow-hidden rounded-full bg-gray-200">
+									    <div class="mt-1 overflow-hidden rounded-full bg-blue-900/80 dark:bg-gray-200">
 										    <div class="h-2 rounded-full bg-indigo-400" style="width: calc((2 * 2 + 1) / 6 * 100%);"></div>
 									    </div>
 								    </div>
 								    <div>
 									    <div class="mt-6 text-xl">Other Skills</div>
-									    <div class="mt-4 md:mt-8 space-y-3">
+									    <div class="mt-2 space-y-3">
 											   <div class="flex items-center gap-3">
 												   <div class="w-fit h-fit flex-none rounded-full p-1 text-kt_green bg-kt_green/20">
 													   <div class="h-2 w-2 rounded-full bg-current"></div>
@@ -363,6 +386,12 @@
 												   </div>
 												   JS, Jquery, CSS/HTML
 											   </div>
+										    <div class="flex items-center gap-3">
+											    <div class="w-fit h-fit flex-none rounded-full p-1 text-kt_green bg-kt_green/20">
+												    <div class="h-2 w-2 rounded-full bg-current"></div>
+											    </div>
+											    Tailwind, Bootstrap
+										    </div>
 										    <div class="flex items-center gap-3">
 											    <div class="w-fit h-fit flex-none rounded-full p-1 text-kt_green bg-kt_green/20">
 												    <div class="h-2 w-2 rounded-full bg-current"></div>
@@ -398,27 +427,27 @@
 
 		    <!-- Section Experience-->
 		    <div class="mb-12">
-			    <div class="mt-6 text-white text-3xl font-semibold">
+			    <div class="mt-6 text-gray-800 dark:text-white text-3xl font-semibold">
 				    Experiences
 			    </div>
 			    <ul role="list" class="mt-6 space-y-6 -ml-2">
-				    <li class="relative flex md:gap-x-4 text-white">
+				    <li class="relative flex md:gap-x-4 text-gray-800 dark:text-white">
 					    <div class="absolute left-0 top-0 flex w-6 justify-center -bottom-6">
 						    <div class="w-[3px] bg-gradient-to-b to-kt_green from-yellow-400 from-70%"></div>
 					    </div>
 					    <div class="relative flex h-18 w-6 flex-none items-center justify-center">
 						    <div class="h-3 w-3 rounded-full bg-gray-800 shadow-[0px_0px_6px_2px] shadow-yellow-400">
-							    <div class="bg-gray-800 rounded-full h-3 w-3 border-[3px] border-white opacity-90"></div>
+							    <div class="bg-yellow-500 dark:bg-gray-800 rounded-full h-3 w-3 border-[3px] border-white opacity-90"></div>
 						    </div>
 					    </div>
-					    <div class="flex-auto rounded-md p-3 md:px-8 md:py-6 items-center bg-white/5">
+					    <div class="flex-auto rounded-md p-3 md:px-8 md:py-6 items-center bg-gray-400/10 dark:bg-white/5">
 						    <div class="flex flex-wrap justify-between gap-x-4">
-							    <div class="py-0.5 text-yellow-100 text-md md:text-lg leading-5 font-semibold">
+							    <div class="py-0.5 text-gray-800 dark:text-yellow-100 text-md md:text-lg leading-5 font-semibold">
 								    Full Stack Developer
 							    </div>
-							    <div class="flex-none py-0.5 text-xs leading-5 text-white md:border border-yellow-400 md:rounded-full md:px-2 py-1 h-fit">2022 - Current</div>
+							    <div class="flex-none py-0.5 text-xs leading-5 text-white bg-yellow-500 dark:bg-transparent md:border dark:border-yellow-400 rounded-full px-2 py-1 h-fit">2022 - Current</div>
 						    </div>
-						    <div class="flex flex-wrap justify-between text-md leading-6 text-gray-300 items-center">
+						    <div class="flex flex-wrap justify-between text-md leading-6 text-gray-500 dark:text-gray-300 items-center">
 							    <div>Webquest.io</div>
 							    <div class="text-sm md:text-md pt-2 md:pt-0">
 								    <i class="fa-solid fa-location-dot"></i>
@@ -448,23 +477,23 @@
 						    </p>
 					    </div>
 				    </li>
-				    <li class="relative flex md:gap-x-4 text-white">
+				    <li class="relative flex md:gap-x-4 text-gray-800 dark:text-white">
 					    <div class="absolute left-0 top-0 flex w-6 justify-center -bottom-6">
 						    <div class="w-[3px] bg-gradient-to-b to-kt_purple from-kt_green from-70%"></div>
 					    </div>
 					    <div class="relative flex h-18 w-6 flex-none items-center justify-center">
 						    <div class="h-3 w-3 rounded-full bg-gray-800 shadow-[0px_0px_6px_2px] shadow-kt_green">
-							    <div class="bg-gray-800 rounded-full h-3 w-3 border-[3px] border-white opacity-90"></div>
+							    <div class="bg-green-500 dark:bg-gray-800 rounded-full h-3 w-3 border-[3px] border-white opacity-90"></div>
 						    </div>
 					    </div>
-					    <div class="flex-auto rounded-md p-3 md:px-8 md:py-6 items-center bg-white/5">
+					    <div class="flex-auto rounded-md p-3 md:px-8 md:py-6 items-center bg-gray-400/10 dark:bg-white/5">
 						    <div class="flex flex-wrap justify-between gap-x-4">
-							    <div class="py-0.5 text-green-200 text-md md:text-lg leading-5 font-semibold">
+							    <div class="py-0.5 text-gray-800 dark:text-green-200 text-md md:text-lg leading-5 font-semibold">
 								    Software Engineer
 							    </div>
-							    <div class="flex-none py-0.5 text-xs leading-5 text-white md:border border-kt_green rounded-full md:px-2 md:py-1 h-fit">2018 - 2022</div>
+							    <div class="flex-none py-0.5 text-xs leading-5 text-white md:border bg-green-500 dark:bg-transparent dark:border-kt_green rounded-full px-2 md:py-1 h-fit">2018 - 2022</div>
 						    </div>
-						    <div class="flex flex-wrap justify-between text-md leading-6 text-gray-300">
+						    <div class="flex flex-wrap justify-between text-md leading-6 text-gray-500 dark:text-gray-300">
 							    <div>Internet Thailand Public Co., Ltd</div>
 							    <div class="text-sm md:text-md pt-2 md:pt-0">
 								    <i class="fa-solid fa-location-dot"></i>
@@ -490,24 +519,23 @@
 						    </p>
 					    </div>
 				    </li>
-
-				    <li class="relative flex md:gap-x-4 text-white">
+				    <li class="relative flex md:gap-x-4 text-gray-800 dark:text-white">
 					    <div class="absolute left-0 top-0 flex w-6 justify-center -bottom-6">
 						    <div class="w-[3px] bg-kt_purple"></div>
 					    </div>
 					    <div class="relative flex h-18 w-6 flex-none items-center justify-center">
 						    <div class="h-3 w-3 rounded-full bg-gray-800 shadow-[0px_0px_9px_4px] shadow-kt_purple">
-							    <div class="bg-gray-800 rounded-full h-3 w-3 border-[3px] border-white opacity-90"></div>
+							    <div class="bg-kt_purple dark:bg-gray-800 rounded-full h-3 w-3 border-[3px] border-white opacity-90"></div>
 						    </div>
 					    </div>
-					    <div class="flex-auto rounded-md p-3 md:px-8 md:py-6 items-center bg-white/5">
+					    <div class="flex-auto rounded-md p-3 md:px-8 md:py-6 items-center bg-gray-400/10 dark:bg-white/5">
 						    <div class="flex flex-wrap justify-between gap-x-4">
-							    <div class="py-0.5 text-purple-200 text-md md:text-lg leading-5 font-semibold">
+							    <div class="py-0.5 text-gray-800 dark:text-purple-200 text-md md:text-lg leading-5 font-semibold">
 								    Student Internship
 							    </div>
-							    <div class="flex-none py-0.5 text-xs leading-5 text-white md:border border-purple-500 rounded-full md:px-2 md:py-1 h-fit">2018 - 2022</div>
+							    <div class="flex-none py-0.5 text-xs leading-5 text-white md:border dark:border-purple-500 bg-indigo-500 dark:bg-transparent rounded-full px-2 md:py-1 h-fit">2018 - 2022</div>
 						    </div>
-						    <div class="flex flex-wrap justify-between text-md leading-6 text-gray-300">
+						    <div class="flex flex-wrap justify-between text-md leading-6 text-gray-500 dark:text-gray-300">
 							    <div>Department of computer science</div>
 							    <div class="text-sm md:text-md pt-2 md:pt-0">
 								    <i class="fa-solid fa-location-dot"></i>
@@ -532,27 +560,27 @@
 
 		    <!-- Education -->
 		    <div class="">
-			    <div class="text-white text-3xl font-semibold">
+			    <div class="text-gray-800 dark:text-white text-3xl font-semibold">
 				    Education
 			    </div>
 			    <ul role="list" class="mt-6 space-y-6 -ml-2">
-				    <li class="relative flex md:gap-x-4 text-white">
+				    <li class="relative flex md:gap-x-4 text-gray-800 dark:text-white">
 					    <div class="absolute left-0 top-0 flex w-6 justify-center bottom-[-0.1rem]">
 						    <div class="w-[3px] bg-amber-600"></div>
 					    </div>
 					    <div class="relative flex h-18 w-6 flex-none items-center justify-center">
 						    <div class="h-3 w-3 rounded-full shadow-[0px_0px_6px_2px] shadow-amber-600">
-							    <div class="bg-gray-800 rounded-full h-3 w-3 border-[3px] border-white opacity-90"></div>
+							    <div class="bg-amber-600 dark:bg-gray-800 rounded-full h-3 w-3 border-[3px] border-white opacity-90"></div>
 						    </div>
 					    </div>
-					    <div class="flex-auto rounded-md p-3 md:px-8 md:py-6 bg-white/5">
+					    <div class="flex-auto rounded-md p-3 md:px-8 md:py-6 bg-gray-400/10 dark:bg-white/5">
 						    <div class="flex flex-wrap justify-between gap-x-4">
 							    <div class="py-0.5 text-md md:text-lg leading-5 font-semibold">
 								    Khon Kaen University 🎓
 							    </div>
-							    <div class="flex-none py-0.5 text-xs leading-5 text-white md:border border-amber-600 rounded-full md:px-2 md:py-1 h-fit">2014 - 2018</div>
+							    <div class="flex-none py-0.5 text-xs leading-5 text-white md:border dark:border-amber-600 bg-amber-500 dark:bg-transparent rounded-full px-2 md:py-1 h-fit">2014 - 2018</div>
 						    </div>
-						    <div class="flex flex-wrap justify-between text-md leading-6 text-gray-300">
+						    <div class="flex flex-wrap justify-between text-md leading-6 text-gray-500 dark:text-gray-300">
 							    <div>Bachelors Degree in Department of Computer Science</div>
 							    <div class="text-sm md:text-md pt-2 md:pt-0">
 								    <i class="fa-solid fa-location-dot"></i>
@@ -569,47 +597,47 @@
 	    </div>
 
 	    <div class="mb-36 mx-auto max-w-7xl px-6 md:px-8 pb-18 pt-10 gap-14 gap-y-20">
-		    <div class="pb-6 text-white text-3xl font-semibold">
+		    <div class="pb-6 text-gray-800 dark:text-white text-3xl font-semibold">
 			    Contact 🌴
 		    </div>
-		    <dl class="grid grid-cols-1 gap-0.5 overflow-hidden rounded-2xl text-center sm:grid-cols-2 lg:grid-cols-4">
-			    <div class="flex text-white bg-white/5 p-3 gap-2">
-				    <div class="w-[40%]">
-					    <img src="./src/images/kesiri.jpg" class="h-32 w-32 rounded-md bg-gray-50 object-cover"/>
+		    <div class="relative isolate overflow-hidden rounded-2xl">
+			    <dl class="grid grid-cols-1 gap-0.5 overflow-hidden rounded-2xl text-center sm:grid-cols-2 lg:grid-cols-4">
+				    <div class="flex text-gray-700 dark:text-white bg-indigo-300/10 dark:bg-white/5 p-3 gap-2">
+					    <div class="w-[40%]">
+						    <img src="./src/images/kesiri.jpg" class="h-32 w-32 rounded-md bg-gray-50 object-cover"/>
+					    </div>
+					    <div class="flex flex-col justify-center items-center w-[60%] text-lg font-semibold self-center">
+						    <svg xmlns="http://www.w3.org/2000/svg" class="fill-green-400 dark:fill-kt_green text-2xl mx-auto mb-2" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 0c36.8 0 68.8 20.7 84.9 51.1C373.8 41 411 49 437 75s34 63.3 23.9 96.1C491.3 187.2 512 219.2 512 256s-20.7 68.8-51.1 84.9C471 373.8 463 411 437 437s-63.3 34-96.1 23.9C324.8 491.3 292.8 512 256 512s-68.8-20.7-84.9-51.1C138.2 471 101 463 75 437s-34-63.3-23.9-96.1C20.7 324.8 0 292.8 0 256s20.7-68.8 51.1-84.9C41 138.2 49 101 75 75s63.3-34 96.1-23.9C187.2 20.7 219.2 0 256 0zM369 209c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-111 111-47-47c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l64 64c9.4 9.4 24.6 9.4 33.9 0L369 209z"/></svg>
+						    Freelance<br/> Available
+					    </div>
 				    </div>
-				    <div class="flex flex-col justify-center items-center w-[60%] text-lg font-semibold self-center">
-					    <svg xmlns="http://www.w3.org/2000/svg" class="fill-kt_green text-2xl mx-auto mb-2" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 0c36.8 0 68.8 20.7 84.9 51.1C373.8 41 411 49 437 75s34 63.3 23.9 96.1C491.3 187.2 512 219.2 512 256s-20.7 68.8-51.1 84.9C471 373.8 463 411 437 437s-63.3 34-96.1 23.9C324.8 491.3 292.8 512 256 512s-68.8-20.7-84.9-51.1C138.2 471 101 463 75 437s-34-63.3-23.9-96.1C20.7 324.8 0 292.8 0 256s20.7-68.8 51.1-84.9C41 138.2 49 101 75 75s63.3-34 96.1-23.9C187.2 20.7 219.2 0 256 0zM369 209c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-111 111-47-47c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l64 64c9.4 9.4 24.6 9.4 33.9 0L369 209z"/></svg>
-					    Freelance<br/> Available
+				    <div class="flex flex-col bg-indigo-300/10 dark:bg-white/5 p-8 space-y-4 justify-center">
+					    <dt class="text-2xl font-semibold leading-6 text-gray-700 dark:text-gray-300">WhatApp</dt>
+					    <dd class="text-lg font-medium tracking-tight text-gray-500 dark:text-white">
+						    <a href="tel:0655124630">TH: 66+ 65-512-4630</a>
+					    </dd>
 				    </div>
+				    <div class="flex flex-col bg-indigo-300/10 dark:bg-white/5 p-8 space-y-4 justify-center">
+					    <dt class="text-2xl font-semibold leading-6 text-gray-700 dark:text-gray-300">E-mail</dt>
+					    <dd class="text-lg font-medium tracking-tight text-gray-500 dark:text-white">
+						    kesirityota@gmail.com
+					    </dd>
+				    </div>
+				    <div class="flex flex-col bg-indigo-300/10 dark:bg-white/5 p-8 space-y-4 justify-center">
+					    <dt class="text-2xl font-semibold leading-6 text-gray-700 dark:text-gray-300">Line ID</dt>
+					    <dd class="text-lg font-medium tracking-tight text-gray-500 dark:text-white">
+						    Kesiri4
+					    </dd>
+				    </div>
+			    </dl>
+			    <div class="absolute left-0 top-full -z-10 mt-96 origin-top-left translate-y-40 -rotate-90 transform-gpu opacity-20 blur-3xl sm:left-1/2 sm:-ml-96 sm:-mt-10 sm:translate-y-0 sm:rotate-0 sm:transform-gpu sm:opacity-50" aria-hidden="true">
+				    <div class="aspect-[1154/678] w-[72.125rem] bg-gradient-to-br from-[#FF80B5] to-[#9089FC]" style="clip-path: polygon(100% 38.5%, 82.6% 100%, 60.2% 37.7%, 52.4% 32.1%, 47.5% 41.8%, 45.2% 65.6%, 27.5% 23.4%, 0.1% 35.3%, 17.9% 0%, 27.7% 23.4%, 76.2% 2.5%, 74.2% 56%, 100% 38.5%)"></div>
 			    </div>
-			    <div class="flex flex-col bg-white/5 p-8 space-y-4 justify-center">
-				    <dt class="text-2xl font-semibold leading-6 text-gray-300">WhatApp</dt>
-				    <dd class="text-lg font-medium tracking-tight text-white">
-					    <a href="tel:0655124630">TH: 66+ 65-512-4630</a>
-				    </dd>
-			    </div>
-			    <div class="flex flex-col bg-white/5 p-8 space-y-4 justify-center">
-				    <dt class="text-2xl font-semibold leading-6 text-gray-300">E-mail</dt>
-				    <dd class="text-lg font-medium tracking-tight text-white">
-					    kesirityota@gmail.com
-				    </dd>
-			    </div>
-			    <div class="flex flex-col bg-white/5 p-8 space-y-4 justify-center">
-				    <dt class="text-2xl font-semibold leading-6 text-gray-300">Line ID</dt>
-				    <dd class="text-lg font-medium tracking-tight text-white">
-					    Kesiri4
-				    </dd>
-			    </div>
-		    </dl>
+		    </div>
 	    </div>
-
-
     </div>
 
     <!-- Footer -->
-
-
-
 
   </body>
 </html>
