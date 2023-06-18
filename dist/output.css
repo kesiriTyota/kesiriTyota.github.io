@@ -1545,6 +1545,30 @@ video {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
+.underline {
+  text-decoration-line: underline;
+}
+
+.decoration-sky-500 {
+  text-decoration-color: #0ea5e9;
+}
+
+.decoration-pink-500 {
+  text-decoration-color: #ec4899;
+}
+
+.decoration-indigo-500 {
+  text-decoration-color: #6366f1;
+}
+
+.decoration-2 {
+  text-decoration-thickness: 2px;
+}
+
+.underline-offset-4 {
+  text-underline-offset: 4px;
+}
+
 .opacity-20 {
   opacity: 0.2;
 }
@@ -2083,26 +2107,6 @@ video {
 @media (min-width: 1280px) {
   .xl\:left-\[calc\(50\%-24rem\)\] {
     left: calc(50% - 24rem);
-  }
-
-  .xl\:top-\[51px\] {
-    top: 51px;
-  }
-
-  .xl\:top-\[20rem\] {
-    top: 20rem;
-  }
-
-  .xl\:top-\[10rem\] {
-    top: 10rem;
-  }
-
-  .xl\:top-\[9rem\] {
-    top: 9rem;
-  }
-
-  .xl\:top-\[8rem\] {
-    top: 8rem;
   }
 
   .xl\:top-\[7rem\] {
