@@ -1,6 +1,6 @@
 ## Project 👩🏻‍💻☕️
 Project Portfolio - Kesiri Theangyota <br/>
-Domain: [kesiriTyota.github.io](kesiriTyota.github.io)
+Domain: [kesiriTyota.github.io](https://kesiriTyota.github.io)
 
 ## Description
 Welcome to "My portfolio" an interesting project built on my remarkable past experiences and pursuits. personal growth career development and my educational success
