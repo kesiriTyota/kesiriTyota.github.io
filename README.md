@@ -7,7 +7,7 @@ Welcome to "My portfolio" an interesting project built on my remarkable past exp
 ## Built With
 <ul>
   <li>HTML/CSS</li>
-  <li>Tailwind</li>
+  <li>Tailwind UI</li>
   <li>Alpine.js</li>
 </ul>
 
