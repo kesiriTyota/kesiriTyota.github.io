@@ -1,6 +1,3 @@
-// Define your Alpine component
-// set local storage
-localStorage.setItem('theme', 'dark');
 const switchDarkMode = () => ({
     mode_dark: true,
     switchMode() {
